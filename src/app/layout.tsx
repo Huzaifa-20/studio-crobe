@@ -56,12 +56,21 @@ export const metadata: Metadata = {
     siteName: "Studio Crobe",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Studio Crobe — Where Art Meets Design",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Studio Crobe — Where Art Meets Design",
     description:
       "Two creative divisions. One studio. Crumbling Studio & Flip Beetle.",
+    images: ["/og-image.png"],
   },
   icons: {
     icon: [
