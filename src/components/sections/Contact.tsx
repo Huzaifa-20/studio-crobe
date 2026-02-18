@@ -130,7 +130,7 @@ export default function Contact() {
 
           <p className="text-[var(--sc-dark-gray)] leading-relaxed max-w-xs text-sm mt-2">
             Whether you have an animation in mind, need a brand built from
-            scratch, or just want to say hello — we&apos;re all ears.
+            scratch, or just want to say hello, we&apos;re all ears.
           </p>
 
           {/* Division callouts */}

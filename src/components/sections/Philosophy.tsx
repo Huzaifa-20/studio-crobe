@@ -49,7 +49,7 @@ export default function Philosophy() {
           <p className="text-[var(--sc-dark-gray)] leading-relaxed text-base max-w-md">
             Studio Crobe is where a pencil and a pixel share the same desk.
             We are the convergence of two fiercely independent creative
-            forces — each brilliant in its own right, and even more powerful
+            forces, each brilliant in its own right, and even more powerful
             together.
           </p>
         </div>
@@ -62,8 +62,8 @@ export default function Philosophy() {
             </span>
             <p className="leading-relaxed text-[var(--sc-dark-gray)]">
               Our art division lives in the gap between a rough sketch and a
-              finished frame. Every hand-drawn line tells a story —
-              animations, music videos, and short films crafted with
+              finished frame. Every hand drawn line tells a story.
+              Animations, advertisments, and films crafted with
               deliberate imperfection.
             </p>
           </div>

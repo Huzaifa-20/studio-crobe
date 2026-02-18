@@ -95,7 +95,7 @@ export default function Divisions() {
           tag="Art Division"
           name="Crumbling"
           nameLine2="Studio"
-          description="Hand-drawn animations, music videos &amp; short films. Storytelling that lives in every line."
+          description="Hand drawn animations, advertisements &amp; films. Storytelling that lives in every line."
           cta="Explore Art"
           borderClass="border-b md:border-b-0 md:border-r border-[var(--sc-black)]"
         />

@@ -24,7 +24,7 @@ export default function Hero() {
       </div>
 
       {/* Doodle image — place hero-doodle.png in /public */}
-      <div className="w-full max-w-6xl px-4 md:px-8">
+      <div className="w-full">
         <HeroImage />
       </div>
     </section>

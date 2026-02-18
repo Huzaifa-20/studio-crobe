@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface NavLink {
   label: string;
@@ -27,18 +28,23 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[var(--sc-white)] border-b border-[var(--sc-black)]"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "bg-[var(--sc-white)] border-b border-[var(--sc-black)]"
+        : "bg-transparent"
+        }`}
     >
       <div className="container-x flex items-center justify-between py-5">
         {/* Logo */}
         <a
           href="#hero"
-          className="font-display text-lg font-bold tracking-tight leading-none hover:opacity-70 transition-opacity"
+          className="flex items-center gap-2 font-display text-lg font-bold tracking-tight leading-none"
         >
+          <Image
+            src="/logo.jpg"
+            alt="Studio Crobe logo"
+            width={34}
+            height={34}
+          />
           Studio Crobe
         </a>
 
@@ -63,28 +69,24 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block h-[1.5px] bg-[var(--sc-black)] transition-all duration-300 origin-center ${
-              menuOpen ? "rotate-45 translate-y-[6.5px]" : ""
-            }`}
+            className={`block h-[1.5px] bg-[var(--sc-black)] transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[6.5px]" : ""
+              }`}
           />
           <span
-            className={`block h-[1.5px] bg-[var(--sc-black)] transition-all duration-300 ${
-              menuOpen ? "opacity-0 scale-x-0" : ""
-            }`}
+            className={`block h-[1.5px] bg-[var(--sc-black)] transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0" : ""
+              }`}
           />
           <span
-            className={`block h-[1.5px] bg-[var(--sc-black)] transition-all duration-300 origin-center ${
-              menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
-            }`}
+            className={`block h-[1.5px] bg-[var(--sc-black)] transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
+              }`}
           />
         </button>
       </div>
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 bg-[var(--sc-white)] border-b border-[var(--sc-black)] ${
-          menuOpen ? "max-h-64" : "max-h-0"
-        }`}
+        className={`md:hidden overflow-hidden transition-all duration-300 bg-[var(--sc-white)] border-b border-[var(--sc-black)] ${menuOpen ? "max-h-64" : "max-h-0"
+          }`}
       >
         <ul className="container-x flex flex-col py-6 gap-6">
           {NAV_LINKS.map(({ label, href }) => (
