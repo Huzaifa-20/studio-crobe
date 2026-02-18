@@ -121,7 +121,7 @@ export default function Contact() {
 
           <h2
             className="font-display font-extrabold leading-[0.9] tracking-tighter"
-            style={{ fontSize: "clamp(3rem, 7vw, 6rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)" }}
           >
             Let&apos;s make
             <br />

@@ -45,14 +45,14 @@ function DivisionBox({
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-8 py-16 gap-6">
         {/* Tag */}
-        <span className="font-accent text-sm tracking-[0.2em] uppercase text-[var(--sc-mid-gray)] group-hover:text-[var(--sc-light-gray)] transition-colors duration-300 delay-100">
+        <span className="font-accent text-sm tracking-[0.2em] uppercase text-[var(--sc-mid-gray)] group-hover:text-[var(--sc-light-gray)] transition-colors duration-650">
           {tag}
         </span>
 
         {/* Division name */}
         <h2
-          className="font-display font-extrabold leading-[0.9] tracking-tighter text-[var(--sc-black)] group-hover:text-[var(--sc-white)] transition-colors duration-300 delay-100"
-          style={{ fontSize: "clamp(3rem, 7vw, 7rem)" }}
+          className="font-display font-extrabold leading-[0.9] tracking-tighter text-[var(--sc-black)] group-hover:text-[var(--sc-white)] transition-colors duration-650"
+          style={{ fontSize: "clamp(2.5rem, 6vw, 6.5rem)" }}
         >
           {name}
           <br />
@@ -60,19 +60,19 @@ function DivisionBox({
         </h2>
 
         {/* Description */}
-        <p className="max-w-xs text-sm leading-relaxed tracking-wide text-[var(--sc-dark-gray)] group-hover:text-[var(--sc-light-gray)] transition-colors duration-300 delay-150">
+        <p className="max-w-xs text-sm leading-relaxed tracking-wide text-[var(--sc-dark-gray)] group-hover:text-[var(--sc-light-gray)] transition-colors duration-650">
           {description}
         </p>
 
         {/* CTA */}
         <div
-          className="flex items-center gap-3 mt-2 text-xs font-semibold tracking-[0.2em] uppercase text-[var(--sc-black)] group-hover:text-[var(--sc-white)] transition-colors duration-300 delay-150"
+          className="flex items-center gap-3 mt-2 text-xs font-semibold tracking-[0.2em] uppercase text-[var(--sc-black)] group-hover:text-[var(--sc-white)] transition-colors duration-650"
         >
           <span
-            className="block h-px w-6 bg-[var(--sc-black)] group-hover:bg-[var(--sc-white)] group-hover:w-10 transition-all duration-500 delay-200"
+            className="block h-px w-6 bg-[var(--sc-black)] group-hover:bg-[var(--sc-white)] group-hover:w-10 transition-all duration-650"
           />
           <span>{cta}</span>
-          <span className="inline-block group-hover:translate-x-1 transition-transform duration-300 delay-200">
+          <span className="inline-block group-hover:translate-x-1 transition-transform duration-650">
             &rarr;
           </span>
         </div>
