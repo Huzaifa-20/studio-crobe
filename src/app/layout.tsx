@@ -27,9 +27,12 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Studio Crobe — Where Art Meets Design",
+  title: {
+    default: "Studio Crobe — Where Art Meets Design",
+    template: "%s | Studio Crobe",
+  },
   description:
-    "Studio Crobe is the parent of two creative divisions: Crumbling Studio (hand-drawn animation & films) and Flip Beetle (branding, design & web development).",
+    "Studio Crobe is the parent of two creative divisions: Crumbling Studio (hand drawn animation & films) and Flip Beetle (branding, design & web development).",
   keywords: [
     "Studio Crobe",
     "Crumbling Studio",
@@ -37,12 +40,41 @@ export const metadata: Metadata = {
     "animation",
     "branding",
     "web design",
+    "hand drawn animation",
+    "creative studio",
+    "design studio",
+    "web development",
   ],
+  authors: [{ name: "Studio Crobe" }],
+  creator: "Studio Crobe",
+  metadataBase: new URL("https://studiocrobe.com"),
   openGraph: {
     title: "Studio Crobe — Where Art Meets Design",
     description:
       "Two creative divisions. One studio. Crumbling Studio & Flip Beetle.",
+    url: "https://studiocrobe.com",
+    siteName: "Studio Crobe",
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Studio Crobe — Where Art Meets Design",
+    description:
+      "Two creative divisions. One studio. Crumbling Studio & Flip Beetle.",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

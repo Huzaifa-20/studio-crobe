@@ -4,10 +4,10 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col items-center justify-end pb-0 pt-28"
+      className="min-h-screen flex flex-col items-center pb-0 pt-28"
     >
       {/* Headline */}
-      <div className="container-x w-full text-center mb-12 md:mb-16">
+      <div className="container-x w-full text-center mb-12 md:mb-16 flex-1 flex flex-col items-center justify-center">
         <h1
           className="font-display font-extrabold leading-[0.88] tracking-tighter"
           style={{ fontSize: "clamp(4.5rem, 18vw, 16rem)" }}
