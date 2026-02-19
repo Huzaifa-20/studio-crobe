@@ -26,7 +26,7 @@ function DivisionBox({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative flex flex-1 flex-col items-center justify-center md:justify-start overflow-hidden cursor-pointer ${borderClass}`}
+      className={`group relative flex flex-1 flex-col items-center justify-center overflow-hidden cursor-pointer ${borderClass}`}
     >
       {/* Ink fill — slides up from the bottom on hover */}
       <span
@@ -47,7 +47,7 @@ function DivisionBox({
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-8 py-16 md:pt-24 gap-6">
+      <div className="relative z-10 flex flex-col items-center text-center px-8 py-24 md:py-32 gap-6">
         {/* Tag */}
         <span className="font-accent text-sm tracking-[0.2em] uppercase text-[var(--sc-light-gray)] lg:text-[var(--sc-mid-gray)] lg:group-hover:text-[var(--sc-light-gray)] transition-colors duration-0">
           {tag}
@@ -102,9 +102,8 @@ export default function Divisions() {
     <section
       id="divisions"
       className="w-full border-t border-[var(--sc-white)] lg:border-[var(--sc-black)]"
-      style={{ minHeight: "100svh" }}
     >
-      <div className="flex flex-col md:flex-row h-full" style={{ minHeight: "100svh" }}>
+      <div className="flex flex-col md:flex-row">
         {/* Crumbling Studio */}
         <DivisionBox
           href="https://crumblingstudio.com"
