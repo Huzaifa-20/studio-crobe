@@ -90,6 +90,7 @@ export default function Contact() {
   const [values, setValues] = useState(INITIAL_VALUES);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (id: string) => (value: string) =>
     setValues((prev) => ({ ...prev, [id]: value }));
@@ -97,14 +98,29 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    /*
-      Hook up your preferred form service here:
-      — Formspree, Resend, Nodemailer, etc.
-      For now we simulate a 1-second send delay.
-    */
-    await new Promise((r) => setTimeout(r, 1000));
-    setLoading(false);
-    setSubmitted(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSubmitted(true);
+      setValues(INITIAL_VALUES);
+    } catch {
+      setError("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -137,7 +153,7 @@ export default function Contact() {
           <div className="flex flex-col gap-4 mt-4 pt-6 border-t border-[var(--sc-light-gray)]">
             {[
               {
-                tag: "Art",
+                tag: "Animation & Production",
                 detail: "crumblingstudio.com",
                 href: "https://crumblingstudio.com",
               },
@@ -221,6 +237,10 @@ export default function Contact() {
                   required
                 />
               </div>
+
+              {error && (
+                <p className="text-red-600 text-sm">{error}</p>
+              )}
 
               <button
                 type="submit"
