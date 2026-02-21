@@ -14,10 +14,11 @@ function escapeHtml(str: string) {
 function buildEmailHtml(fields: {
   name: string;
   email: string;
+  phone?: string;
   subject?: string;
   message: string;
 }) {
-  const { name, email, subject, message } = fields;
+  const { name, email, phone, subject, message } = fields;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -51,6 +52,16 @@ function buildEmailHtml(fields: {
                     <a href="mailto:${escapeHtml(email)}" style="font-size:14px;color:#8a8a84;text-decoration:none;">${escapeHtml(email)}</a>
                   </td>
                 </tr>
+                ${
+                  phone
+                    ? `<tr>
+                  <td style="padding:20px 0;border-bottom:1px solid #e0e0db;">
+                    <p style="margin:0 0 4px;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#8a8a84;">Phone</p>
+                    <a href="tel:${escapeHtml(phone)}" style="font-size:15px;color:#0c0c0c;text-decoration:none;">${escapeHtml(phone)}</a>
+                  </td>
+                </tr>`
+                    : ""
+                }
                 ${
                   subject
                     ? `<tr>
@@ -99,7 +110,7 @@ function buildEmailHtml(fields: {
 
 export async function POST(request: Request) {
   try {
-    const { name, email, subject, message } = await request.json();
+    const { name, email, phone, subject, message } = await request.json();
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -113,7 +124,7 @@ export async function POST(request: Request) {
       to: process.env.RESEND_TO_EMAIL!,
       subject: subject || `New contact from ${name}`,
       replyTo: email,
-      html: buildEmailHtml({ name, email, subject, message }),
+      html: buildEmailHtml({ name, email, phone, subject, message }),
     });
 
     if (error) {

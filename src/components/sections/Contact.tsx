@@ -5,7 +5,7 @@ import { useState, FormEvent } from "react";
 interface FormField {
   id: string;
   label: string;
-  type: "text" | "email" | "textarea";
+  type: "text" | "email" | "tel" | "textarea";
   placeholder: string;
   required?: boolean;
 }
@@ -24,6 +24,12 @@ const FORM_FIELDS: FormField[] = [
     type: "email",
     placeholder: "your@email.com",
     required: true,
+  },
+  {
+    id: "phone",
+    label: "Phone",
+    type: "tel",
+    placeholder: "+1 (555) 000-0000",
   },
   {
     id: "subject",
@@ -82,6 +88,7 @@ function FormFieldInput({ field, value, onChange }: FieldProps) {
 const INITIAL_VALUES: Record<string, string> = {
   name: "",
   email: "",
+  phone: "",
   subject: "",
   message: "",
 };
