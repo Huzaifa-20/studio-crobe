@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useRef, useCallback, FormEvent } from "react";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 
 interface FormField {
   id: string;
@@ -98,12 +99,36 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileError, setTurnstileError] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
 
   const handleChange = (id: string) => (value: string) =>
     setValues((prev) => ({ ...prev, [id]: value }));
 
+  const handleTurnstileSuccess = useCallback((token: string) => {
+    setTurnstileToken(token);
+    setTurnstileError(null);
+  }, []);
+
+  const handleTurnstileError = useCallback(() => {
+    setTurnstileToken(null);
+    setTurnstileError("Verification failed. Please try again.");
+  }, []);
+
+  const handleTurnstileExpire = useCallback(() => {
+    setTurnstileToken(null);
+    setTurnstileError("Verification expired. Please verify again.");
+  }, []);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!turnstileToken) {
+      setTurnstileError("Please complete the verification challenge.");
+      return;
+    }
+
     setLoading(true);
     setError("");
 
@@ -111,20 +136,25 @@ export default function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, turnstileToken }),
       });
 
-      const data = await res.json();
-
       if (!res.ok) {
-        setError(data.error || "Something went wrong. Please try again.");
-        return;
+        const errorData = await res.json().catch(() => null);
+        if (res.status === 403) {
+          setTurnstileToken(null);
+          turnstileRef.current?.reset();
+          throw new Error(errorData?.error || "Verification failed. Please try again.");
+        }
+        throw new Error(errorData?.error || "Failed to send message");
       }
 
       setSubmitted(true);
       setValues(INITIAL_VALUES);
-    } catch {
-      setError("Failed to send message. Please try again.");
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Sorry, something went wrong. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -245,13 +275,31 @@ export default function Contact() {
                 />
               </div>
 
+              {/* Turnstile CAPTCHA */}
+              <div className="space-y-2">
+                <Turnstile
+                  ref={turnstileRef}
+                  siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                  onSuccess={handleTurnstileSuccess}
+                  onError={handleTurnstileError}
+                  onExpire={handleTurnstileExpire}
+                  options={{
+                    theme: "light",
+                    size: "flexible",
+                  }}
+                />
+                {turnstileError && (
+                  <p className="text-red-500 text-sm">{turnstileError}</p>
+                )}
+              </div>
+
               {error && (
                 <p className="text-red-600 text-sm">{error}</p>
               )}
 
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !turnstileToken}
                 className="sketch-border self-start px-8 py-4 font-display font-bold text-sm tracking-widest uppercase bg-[var(--sc-black)] text-[var(--sc-white)] hover:bg-[var(--sc-white)] hover:text-[var(--sc-black)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? "Sending…" : "Send Message"}

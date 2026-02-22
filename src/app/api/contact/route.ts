@@ -3,6 +3,26 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+interface TurnstileVerifyResponse {
+  success: boolean;
+  "error-codes": string[];
+}
+
+async function verifyTurnstileToken(token: string): Promise<TurnstileVerifyResponse> {
+  const response = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        secret: process.env.TURNSTILE_SECRET_KEY,
+        response: token,
+      }),
+    }
+  );
+  return response.json();
+}
+
 function escapeHtml(str: string) {
   return str
     .replace(/&/g, "&amp;")
@@ -110,12 +130,28 @@ function buildEmailHtml(fields: {
 
 export async function POST(request: Request) {
   try {
-    const { name, email, phone, subject, message } = await request.json();
+    const { name, email, phone, subject, message, turnstileToken } = await request.json();
 
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Name, email, and message are required." },
         { status: 400 }
+      );
+    }
+
+    if (!turnstileToken) {
+      return NextResponse.json(
+        { error: "CAPTCHA verification is required." },
+        { status: 400 }
+      );
+    }
+
+    const turnstileResult = await verifyTurnstileToken(turnstileToken);
+    if (!turnstileResult.success) {
+      console.error("Turnstile verification failed:", turnstileResult["error-codes"]);
+      return NextResponse.json(
+        { error: "CAPTCHA verification failed. Please try again." },
+        { status: 403 }
       );
     }
 
