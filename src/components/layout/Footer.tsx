@@ -79,8 +79,21 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Right — division links */}
+          {/* Right — division links & booking */}
           <div className="flex flex-col sm:flex-row gap-8">
+            <a
+              href="https://cal.com/studio-crobe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col gap-1"
+            >
+              <span className="font-accent text-xs tracking-widest uppercase text-[var(--sc-mid-gray)]">
+                Schedule a meeting
+              </span>
+              <span className="font-display text-base font-semibold group-hover:underline transition-all">
+                Book a Call &rarr;
+              </span>
+            </a>
             {DIVISION_LINKS.map(({ name, href, tagline }) => (
               <a
                 key={href}

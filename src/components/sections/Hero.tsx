@@ -21,6 +21,15 @@ export default function Hero() {
         >
           Where art meets design.
         </p>
+
+        <a
+          href="https://cal.com/studio-crobe"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="sketch-border-sm mt-10 px-7 py-3.5 font-display font-bold text-sm tracking-widest uppercase bg-[var(--sc-black)] text-[var(--sc-white)] hover:bg-[var(--sc-white)] hover:text-[var(--sc-black)] transition-colors duration-200"
+        >
+          Book a Call
+        </a>
       </div>
 
       {/* Doodle image — place hero-doodle.png in /public */}

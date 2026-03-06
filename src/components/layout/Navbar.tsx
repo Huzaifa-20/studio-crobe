@@ -60,6 +60,14 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="https://cal.com/studio-crobe" target="_blank" rel="noopener noreferrer"
+              className="sketch-border-sm px-5 py-2.5 text-xs font-display font-bold tracking-widest uppercase bg-[var(--sc-black)] text-[var(--sc-white)] hover:bg-[var(--sc-white)] hover:text-[var(--sc-black)] transition-colors duration-200"
+            >
+              Book a Call
+            </a>
+          </li>
         </ul>
 
         {/* Mobile hamburger */}
@@ -100,6 +108,15 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="https://cal.com/studio-crobe" target="_blank" rel="noopener noreferrer"
+              onClick={handleLinkClick}
+              className="sketch-border-sm inline-block px-6 py-3 font-display text-base font-bold tracking-widest uppercase bg-[var(--sc-black)] text-[var(--sc-white)] hover:bg-[var(--sc-white)] hover:text-[var(--sc-black)] transition-colors duration-200"
+            >
+              Book a Call
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
