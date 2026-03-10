@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, Space_Grotesk, Caveat } from "next/font/google";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 /* ── Display font: bold, architectural, high-impact ── */
 const syne = Syne({
@@ -95,6 +96,7 @@ export default function RootLayout({
       <body
         className={`${syne.variable} ${spaceGrotesk.variable} ${caveat.variable} antialiased`}
       >
+        <GoogleAnalytics />
         {children}
       </body>
     </html>
