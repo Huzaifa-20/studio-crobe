@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, FormEvent } from "react";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import { CRUMBLING_STUDIO_URL, FLIP_BEETLE_URL } from "@/constants/links";
 
 interface FormField {
   id: string;
@@ -192,12 +193,12 @@ export default function Contact() {
               {
                 tag: "Animation & Production",
                 detail: "crumblingstudio.com",
-                href: "https://crumblingstudio.com",
+                href: CRUMBLING_STUDIO_URL,
               },
               {
                 tag: "Design & Dev",
                 detail: "flipbeetle.com",
-                href: "https://flipbeetle.com",
+                href: FLIP_BEETLE_URL,
               },
             ].map(({ tag, detail, href }) => (
               <a

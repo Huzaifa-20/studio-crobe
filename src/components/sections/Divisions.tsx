@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CRUMBLING_STUDIO_URL, FLIP_BEETLE_URL } from "@/constants/links";
 
 interface DivisionProps {
   href: string;
@@ -106,7 +107,7 @@ export default function Divisions() {
       <div className="flex flex-col md:flex-row">
         {/* Crumbling Studio */}
         <DivisionBox
-          href="https://crumblingstudio.com"
+          href={CRUMBLING_STUDIO_URL}
           tag="Art Division"
           name="Crumbling"
           nameLine2="Studio"
@@ -118,7 +119,7 @@ export default function Divisions() {
 
         {/* Flip Beetle */}
         <DivisionBox
-          href="https://flipbeetle.com"
+          href={FLIP_BEETLE_URL}
           tag="Design & Dev Division"
           name="Flip"
           nameLine2="Beetle"

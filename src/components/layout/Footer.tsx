@@ -1,3 +1,5 @@
+import { CRUMBLING_STUDIO_URL, FLIP_BEETLE_URL } from "@/constants/links";
+
 interface FooterDivisionLink {
   name: string;
   href: string;
@@ -7,12 +9,12 @@ interface FooterDivisionLink {
 const DIVISION_LINKS: FooterDivisionLink[] = [
   {
     name: "Crumbling Studio",
-    href: "https://crumblingstudio.com",
+    href: CRUMBLING_STUDIO_URL,
     tagline: "Art Division",
   },
   {
     name: "Flip Beetle",
-    href: "https://flipbeetle.com",
+    href: FLIP_BEETLE_URL,
     tagline: "Design & Dev Division",
   },
 ];
