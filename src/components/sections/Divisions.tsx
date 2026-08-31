@@ -3,7 +3,7 @@ import { CRUMBLING_STUDIO_URL, FLIP_BEETLE_URL } from "@/constants/links";
 
 interface DivisionProps {
   href: string;
-  tag: string;
+  tag?: string;
   name: string;
   nameLine2: string;
   description: string;
@@ -49,6 +49,7 @@ function DivisionBox({
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-8 py-24 md:py-32 gap-6">
+
         {/* Tag */}
         <span className="font-accent text-sm tracking-[0.2em] uppercase text-[var(--sc-light-gray)] lg:text-[var(--sc-mid-gray)] lg:group-hover:text-[var(--sc-light-gray)] transition-colors duration-0">
           {tag}
@@ -57,7 +58,7 @@ function DivisionBox({
         {/* Division name */}
         <h2
           className="font-display font-extrabold leading-[0.9] tracking-tighter text-[var(--sc-white)] lg:text-[var(--sc-black)] lg:group-hover:text-[var(--sc-white)] transition-colors duration-0"
-          style={{ fontSize: "clamp(2.5rem, 6vw, 6.5rem)" }}
+          style={{ fontSize: "clamp(2.5rem, 4.5vw, 6.5rem)" }}
         >
           {name}
           <br />
@@ -108,24 +109,22 @@ export default function Divisions() {
         {/* Crumbling Studio */}
         <DivisionBox
           href={CRUMBLING_STUDIO_URL}
-          tag="Art Division"
-          name="Crumbling"
-          nameLine2="Studio"
+          name="Art"
+          nameLine2="Division"
           description="Hand drawn animations, advertisements &amp; films. Storytelling that lives in every line."
           image="/crow.gif"
-          cta="Explore Art"
+          cta="Explore Crumbling Studio"
           borderClass="border-b md:border-b-0 md:border-r border-[var(--sc-white)] lg:border-[var(--sc-black)]"
         />
 
         {/* Flip Beetle */}
         <DivisionBox
           href={FLIP_BEETLE_URL}
-          tag="Design & Dev Division"
-          name="Flip"
-          nameLine2="Beetle"
-          description="Branding, UI/UX design &amp; web development. Building brands people believe in."
+          name="Design & Dev"
+          nameLine2="Division"
+          description="Branding, UI/UX, design &amp; development. Building brands people believe in."
           image="/beetle.gif"
-          cta="Explore Design"
+          cta="Explore Flip Beetle"
           borderClass="border-b md:border-b-0 md:border-r border-[var(--sc-white)] lg:border-[var(--sc-black)]"
 
         />

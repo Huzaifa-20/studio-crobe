@@ -83,14 +83,14 @@ export default function Philosophy() {
       </div>
 
       {/* Bottom pull quote */}
-      <div className="mt-16 pt-10 border-t border-[var(--sc-light-gray)]">
+      {/* <div className="mt-16 pt-10 border-t border-[var(--sc-light-gray)]">
         <p
           className="font-accent text-[var(--sc-mid-gray)] max-w-xl"
           style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)" }}
         >
           &ldquo;Crumbling since day one. Building since day two.&rdquo;
         </p>
-      </div>
+      </div> */}
     </section>
   );
 }
