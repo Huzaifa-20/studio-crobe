@@ -29,7 +29,7 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Studio Crobe — Where Art Meets Design",
+    default: "Studio Crobe | Where Art Meets Design",
     template: "%s | Studio Crobe",
   },
   description:
