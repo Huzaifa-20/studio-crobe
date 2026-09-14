@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   creator: "Studio Crobe",
   metadataBase: new URL("https://studiocrobe.com"),
   openGraph: {
-    title: "Studio Crobe — Where Art Meets Design",
+    title: "Studio Crobe | Where Art Meets Design",
     description:
       "Two creative divisions. One studio. Crumbling Studio & Flip Beetle.",
     url: "https://studiocrobe.com",
@@ -62,13 +62,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Studio Crobe — Where Art Meets Design",
+        alt: "Studio Crobe | Where Art Meets Design",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio Crobe — Where Art Meets Design",
+    title: "Studio Crobe | Where Art Meets Design",
     description:
       "Two creative divisions. One studio. Crumbling Studio & Flip Beetle.",
     images: ["/og-image.png"],
